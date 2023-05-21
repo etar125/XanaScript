@@ -8,6 +8,16 @@ namespace xanascr
 {
     class Globl
     {
+        /*
+        public enum Status
+        {
+            Work,
+            Complete
+        }
+
+        public static Status met;
+        */
+
         public static string Convert(string text)
         {
             for (int ii = 0; ii < text.Length; ii++)

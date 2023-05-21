@@ -40,7 +40,11 @@ namespace xanascr
                         string ars = tk.Substring(m + 1);
                         string[] ll = first.Split(new string[] { "->" }, StringSplitOptions.None);
                         if (ll[0] == "console")
+                        {
                             Base.Do(ll[1], ars);
+                            //while (Globl.met != Globl.Status.Complete) { }
+                        }
+                        //Globl.met = Globl.Status.Work;
                     }
                     catch (Exception e) { Console.WriteLine("Line::" + i + "\nText::" + tk + "\nError::" + e.Message); Console.ReadKey(true); Environment.Exit(0); }
                 }

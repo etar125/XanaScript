@@ -32,6 +32,7 @@ namespace xanascr.Consol
                 else
                     Program.vars.Add(args, k);
             }
+            //Globl.met = Globl.Status.Complete;
         }
     }
 }
