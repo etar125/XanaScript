@@ -1,0 +1,6 @@
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\bin\Debug\xanascr.exe.config
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\bin\Debug\xanascr.exe
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\bin\Debug\xanascr.pdb
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\obj\Debug\xanascr.csprojResolveAssemblyReference.cache
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\obj\Debug\xanascr.exe
+c:\users\etar125\documents\visual studio 2015\Projects\xanascr\xanascr\obj\Debug\xanascr.pdb
