@@ -14,8 +14,16 @@ namespace xanascr.Consol
                 Console.WriteLine(Globl.Convert(args));
             else if (func == "print")
                 Console.Write(Globl.Convert(args));
+            else if (func == "clear")
+                Console.Clear();
+            else if (func == "exit")
+                Environment.Exit(0);
             else if (func == "title")
                 Console.Title = Globl.Convert(args);
+            else if (func == "foreclr")
+                Console.ForegroundColor = Globl.ParseByName(args);
+            else if (func == "backclr")
+                Console.BackgroundColor = Globl.ParseByName(args);
             else if (func == "getkey")
             {
                 ConsoleKeyInfo k = Console.ReadKey();

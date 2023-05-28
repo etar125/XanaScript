@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using xanascr.Consol;
 using System.IO;
+using xanascr.Consol;
+using xanascr.Variables;
 
 namespace xanascr
 {
@@ -12,6 +13,8 @@ namespace xanascr
     {
         public static Dictionary<string, string> vars = new Dictionary<string, string> { };
         public static Dictionary<string, string> temp = new Dictionary<string, string> { };
+        public static string[] ln;
+        public static int i;
 
         static void Main(string[] args)
         {
@@ -21,34 +24,38 @@ namespace xanascr
                     file = s;
             if (File.Exists(file))
             {
-                string[] ln = File.ReadAllLines(file);
-                for(int i = 0; i < ln.Length; i++)
+                ln = File.ReadAllLines(file);
+                for(i = 0; i < ln.Length; i++)
                 {
                     string tk = ln[i];
                     try
                     {
-                        int m = 0;
-                        for (int a = 0; a < tk.Length; a++)
-                        {
-                            if (tk[a] == ' ')
-                            {
-                                m = a;
-                                break;
-                            }
-                        }
-                        string first = tk.Substring(0, m);
-                        string ars = tk.Substring(m + 1);
-                        string[] ll = first.Split(new string[] { "->" }, StringSplitOptions.None);
+                        string[] sl = Globl.SplitByFirst(tk, ' ');
+                        string[] ll = sl[0].Split(new string[] { "->" }, StringSplitOptions.None);
                         if (ll[0] == "console")
                         {
-                            Base.Do(ll[1], ars);
-                            //while (Globl.met != Globl.Status.Complete) { }
+                            Base.Do(ll[1], sl[1]);
                         }
-                        //Globl.met = Globl.Status.Work;
+                        else if (ll[0] == "variable")
+                        {
+                            Vars.Do(ll[1], sl[1], i);
+                        }
                     }
                     catch (Exception e) { Console.WriteLine("Line::" + i + "\nText::" + tk + "\nError::" + e.Message); Console.ReadKey(true); Environment.Exit(0); }
                 }
             }
+        }
+
+        public static int Search(int startIndex, string text)
+        {
+            for(int i = startIndex; i < ln.Length; i++)
+            {
+                if(ln[i] == text)
+                {
+                    return i;
+                }
+            }
+            return 0;
         }
     }
 }
