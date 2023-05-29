@@ -41,8 +41,9 @@ namespace xanascr
             return new string[] { first, second };
         }
 
-        public static string Convert(string text)
+        public static string ConvertS(string text)
         {
+            string das = "";
             for (int ii = 0; ii < text.Length; ii++)
             {
                 if (text[ii] == '%')
@@ -55,18 +56,19 @@ namespace xanascr
                             int endIndex = j;
                             int length = endIndex - startIndex;
                             string var = text.Substring(startIndex + 1, length - 1);
-                            text = text.Remove(startIndex, length + 1);
                             if (Program.vars.ContainsKey(var))
                             {
-                                text = text.Insert(startIndex, Program.vars[var]);
+                                das += Program.vars[var];
                             }
                             ii = j;
                             break;
                         }
                     }
                 }
+                else
+                    das += text[ii];
             }
-            return text;
+            return das;
         }
 
         public static ConsoleColor ParseByName(string color)

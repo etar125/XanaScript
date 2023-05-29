@@ -11,15 +11,15 @@ namespace xanascr.Consol
         public static void Do(string func, string args)
         {
             if (func == "println")
-                Console.WriteLine(Globl.Convert(args));
+                Console.WriteLine(Globl.ConvertS(args));
             else if (func == "print")
-                Console.Write(Globl.Convert(args));
+                Console.Write(Globl.ConvertS(args));
             else if (func == "clear")
                 Console.Clear();
             else if (func == "exit")
                 Environment.Exit(0);
             else if (func == "title")
-                Console.Title = Globl.Convert(args);
+                Console.Title = Globl.ConvertS(args);
             else if (func == "foreclr")
                 Console.ForegroundColor = Globl.ParseByName(args);
             else if (func == "backclr")
@@ -39,6 +39,15 @@ namespace xanascr.Consol
                     Program.vars[args] = k;
                 else
                     Program.vars.Add(args, k);
+            }
+            else if (func == "goto")
+            {
+                if (Program.funcs.ContainsKey(args))
+                    Program.i = Program.funcs[args];
+            }
+            else if (func == "gotoline")
+            {
+                Program.i = int.Parse(args);
             }
             //Globl.met = Globl.Status.Complete;
         }

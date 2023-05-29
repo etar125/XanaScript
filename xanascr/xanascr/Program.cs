@@ -13,6 +13,7 @@ namespace xanascr
     {
         public static Dictionary<string, string> vars = new Dictionary<string, string> { };
         public static Dictionary<string, string> temp = new Dictionary<string, string> { };
+        public static Dictionary<string, int> funcs = new Dictionary<string, int> { };
         public static string[] ln;
         public static int i;
 
@@ -25,7 +26,20 @@ namespace xanascr
             if (File.Exists(file))
             {
                 ln = File.ReadAllLines(file);
-                for(i = 0; i < ln.Length; i++)
+                for (i = 0; i < ln.Length; i++)
+                {
+                    string tk = ln[i];
+                    try
+                    {
+                        if (tk.StartsWith("console->function "))
+                        {
+                            string[] sl = Globl.SplitByFirst(tk, ' ');
+                            funcs.Add(sl[1], i);
+                        }
+                    }
+                    catch (Exception e) { Console.WriteLine("Line::" + i + "\nText::" + tk + "\nError::" + e.Message); Console.ReadKey(true); Environment.Exit(0); }
+                }
+                for (i = 0; i < ln.Length; i++)
                 {
                     string tk = ln[i];
                     try
